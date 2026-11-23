@@ -1,8 +1,8 @@
 %% ELE 3613 Signals and Systems - Project
-% Removing noise from a signal with a lowpass filter
+% Noise reduction with a lowpass filter
 %
 % We make a clean signal, add noise to it, and use a lowpass
-% filter (Lab 5) to remove the noise. Then we compare the signal
+% filter (Lab 5) to reduce the noise. Then we compare the signal
 % before and after, in time and in frequency (FFT, Labs 7 and 8).
 
 clc; clear; close all;
