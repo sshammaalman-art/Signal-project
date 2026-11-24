@@ -53,3 +53,8 @@ xline(fc, 'k--', 'cutoff 1000 Hz')
 %% Step 6: SNR before and after
 SNR_before = 10*log10(sum(x.^2) / sum((xn - x).^2))
 SNR_after  = 10*log10(sum(x.^2) / sum((y  - x).^2))
+
+%% Step 7: listen to the signals
+soundsc(xn, fs)
+pause(1)
+soundsc(y, fs)
