@@ -37,19 +37,19 @@ plot(t(k), y(k), 'Color', [0.2 0.7 0.2], 'LineWidth', 1.5), grid on
 ylim([-1.5 1.5]), ylabel('Amplitude'), xlabel('Time (s)')
 title('Filtered Signal')
 
-%% Step 5: frequency domain - before and after (FFT)
+%% Step 5: frequency domain - before and after filtering (FFT)
 N  = length(xn);
 f  = (0:N/2-1)*fs/N;                      % frequency axis (Hz)
 Xn = abs(fft(xn))/N;  Xn = 2*Xn(1:N/2);   % spectrum before filtering
 Y  = abs(fft(y))/N;   Y  = 2*Y(1:N/2);    % spectrum after filtering
 
 figure
-subplot(1,2,1)
+subplot(2,1,1)
 plot(f, Xn, 'Color', [0.2 0.4 0.8]), grid on
 xlim([0 2500]), ylim([0 0.7])
 xlabel('Frequency (Hz)'), ylabel('Amplitude')
 title('Before filtering')
-subplot(1,2,2)
+subplot(2,1,2)
 plot(f, Y, 'Color', [0.85 0.33 0.10]), grid on
 xlim([0 2500]), ylim([0 0.7])
 xlabel('Frequency (Hz)'), ylabel('Amplitude')
