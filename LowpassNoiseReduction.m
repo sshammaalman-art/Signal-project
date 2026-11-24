@@ -21,16 +21,21 @@ xn = x + noise;                                      % noisy signal
 fc = 1000;                     % cutoff frequency (Hz)
 y  = lowpass(xn, fc, fs);      % keeps below 1000 Hz, removes the rest
 
-%% Step 4: time domain - noisy, clean and filtered in one plot
-k = t <= 0.02;                 % first 20 ms so we can see the waves
+%% Step 4: time domain - clean, noisy and filtered signal
+k = t <= 0.025;                % first 25 ms so we can see the waves
 figure
-plot(t(k)*1000, xn(k), 'Color', [0.7 0.7 0.7]), hold on
-plot(t(k)*1000, x(k), 'k--', 'LineWidth', 1.5)
-plot(t(k)*1000, y(k), 'Color', [0.85 0.33 0.10], 'LineWidth', 1.5)
-hold off, grid on
-xlabel('Time (ms)'), ylabel('Amplitude')
-legend('Noisy signal', 'Clean signal', 'Filtered signal', 'Location', 'southoutside', 'Orientation', 'horizontal')
-title('Time domain: noisy, clean and filtered signal')
+subplot(3,1,1)
+plot(t(k), x(k), 'b', 'LineWidth', 1.5), grid on
+ylim([-1.5 1.5]), ylabel('Amplitude')
+title('Clean Signal')
+subplot(3,1,2)
+plot(t(k), xn(k), 'r', 'LineWidth', 1.5), grid on
+ylim([-1.5 1.5]), ylabel('Amplitude')
+title('Noisy Signal')
+subplot(3,1,3)
+plot(t(k), y(k), 'Color', [0.2 0.7 0.2], 'LineWidth', 1.5), grid on
+ylim([-1.5 1.5]), ylabel('Amplitude'), xlabel('Time (s)')
+title('Filtered Signal')
 
 %% Step 5: frequency domain - before and after (FFT)
 N  = length(xn);
